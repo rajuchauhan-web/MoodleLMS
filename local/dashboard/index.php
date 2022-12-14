@@ -198,7 +198,7 @@ $PAGE->set_pagelayout('standard');
                </div>
                <div class="form-group row">
                   <label for="label" class="col-md-3">Enter Domain<span class="err"> *</span></label> 
-                  <input type="text" class="form-control col-md-9 focusError" id="domain" placeholder="Enter Domain" name="domain" required>
+                  <input type="text" class="form-control col-md-9 focusError" id="domain" placeholder="Enter Domain" name="domain" onkeyup="validateDomain(this.value)" required>
                   <div class="col-md-3"></div>
                   <span class="error1 col-md-8 pl-0"></span>
                </div>
@@ -356,7 +356,33 @@ function smallOnly(inputvalue) {
       // longname.style.border = "1px solid rgba(0,0,0,.1)";
    }
 }
-      
+
+function validateDomain(inputvalue) {
+   var smallletter = /^[a-z]+$/;
+   var erroeClass = document.getElementsByClassName('error1');
+   if (inputvalue.length > 0)
+   {
+      if(inputvalue.match(smallletter))
+      {
+         erroeClass[5].innerHTML = " ";
+         window.domain_check = true;
+         // longname.style.border = "1px solid rgba(0,0,0,.1)";
+      }
+      else
+      {
+         erroeClass[5].innerHTML = "Domain allow only small letter";
+         window.domain_check = false;
+         // longname.style.border = "1px solid red";
+      }
+   }
+   else
+   {
+      erroeClass[5].innerHTML = "This Field Is Required";
+      // longname.style.border = "1px solid rgba(0,0,0,.1)";
+   }
+}
+
+
 $(document).ready(function() 
 {
    $(".eye").click(function() 
@@ -393,6 +419,7 @@ function validateEmail(email)
 // *****************validateEmail End******************
 function adduniversity() 
 { 
+   
    var form = $('#addnewuniversity');
    var formData = new FormData($('#addnewuniversity')[0]);
    var select_courses = $("#courses").val();
@@ -443,12 +470,12 @@ function adduniversity()
       }
    }
 
-   // if(check_true)
-   // {
-   //    var d=$('#courses').val();
-   //    console.log(d);
-   //    alert("ok");
-   // }
+   if(domain.trim() != '')
+   {
+      if (!window.domain_check) {
+         error1[5].innerHTML = "Domain allow only small letter";
+      }
+   }
 
    if (check_true) 
    {
@@ -479,7 +506,7 @@ function adduniversity()
       } 
    }
    
-   if (all_true) 
+   if (all_true && window.domain_check) 
    // if (true) 
    {
       $.ajax({
