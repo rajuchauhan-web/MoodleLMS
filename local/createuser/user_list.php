@@ -8,17 +8,17 @@ require_login();
 
 
 
-$sub = "Welcome";
-$msg = "Hi";
-$to_user = new stdClass();
-$to_user->email= "titumoney2401@gmail.com";
-$to_user->id =2;
+// $sub = "Welcome";
+// $msg = "Hi";
+// $to_user = new stdClass();
+// $to_user->email= "titumoney2401@gmail.com";
+// $to_user->id =2;
 
-$from_user = new stdClass();
-$from_user->email= 'clientsmtp@dcc.rannlab.com';
-$from_user->maildisplay= true;
+// $from_user = new stdClass();
+// $from_user->email= 'clientsmtp@dcc.rannlab.com';
+// $from_user->maildisplay= true;
 
-email_to_user($to_user,$from_user,$sub,$msg);
+// email_to_user($to_user,$from_user,$sub,$msg);
 
 
 

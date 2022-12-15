@@ -45,7 +45,7 @@ if(@mysqli_num_rows($tenantdata)>0)
   while ($obj = $tenantdata->fetch_object()) 
   {
     $tsubdomain= $obj->domain;
-    $CFG->wwwroot='http://'.$tsubdomain.'.'.$maindomain.'.in';
+    $CFG->wwwroot='http://'.$tsubdomain.'.'.$maindomain.'.in/MoodleLMS5';
     
     session_start();
     $_SESSION["logo_path"] = $CFG->wwwroot.$obj->logo_path;

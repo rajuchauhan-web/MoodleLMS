@@ -1,0 +1,1 @@
+s:298:"<strong>Stack trace: </strong> <ul style="text-align:left;"><li>line 1029 of \admin\tool\uploaduser\classes\process.php: ParseError thrown</li><li>line ? of unknownfile: call to core_component::classloader()</li><li>line 75 of \admin\tool\uploaduser\index.php: call to spl_autoload_call()</li></ul>";
